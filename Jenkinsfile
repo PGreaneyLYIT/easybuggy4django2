@@ -1,10 +1,9 @@
 pipeline {
 agent any
   tools {
-        jdk 'openjdk-11'
+        jdk 'java11'
     }
 stages{
-node {
   stage('SCM') {
     checkout scm
   }
@@ -14,6 +13,5 @@ node {
       sh "${scannerHome}/bin/sonar-scanner"
     }
   }
-}
 }
 }
