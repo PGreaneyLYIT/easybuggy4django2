@@ -1,7 +1,9 @@
-node {
+pipeline {
+agent any
   tools {
         jdk 'openjdk-11'
     }
+node {
   stage('SCM') {
     checkout scm
   }
