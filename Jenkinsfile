@@ -3,8 +3,10 @@ pipeline {
   tools {jdk "java11"}
   stages {
     stage('SCM') {
-      node {
-        checkout scm
+      steps {
+        node {
+          checkout scm
+        }
       }
     }
     stage('SonarQube Analysis') {
