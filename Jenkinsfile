@@ -1,26 +1,13 @@
-pipeline {
-  agent any
-  tools {jdk "java11"}
-  stages {
-    stage('SCM') {
-      steps {
-        node('main') {
-          checkout scm
-        }
-      }
+stage('SonarQube analysis') {
+    tools {
+        jdk "java11" // the name you have given the JDK installation in Global Tool Configuration
     }
-    stage('SonarQube Analysis') {
-      environment {
-        scannerHome = tool 'SQScanner'
-        JAVA_HOME="${tool 'java11'}"
-        PATH="${JAVA_HOME}/bin:${PATH}"
-      }
-      steps {
-        sh 'java -version'
+    environment {
+        scannerHome = tool 'SQScanner' // the name you have given the Sonar Scanner (in Global Tool Configuration)
+    }
+    steps {
         withSonarQubeEnv(installationName: 'SonarQube') {
-          sh "${scannerHome}/bin/sonar-scanner"
+            sh "${scannerHome}/bin/sonar-scanner -X"
         }
-      }
     }
-  }
 }
