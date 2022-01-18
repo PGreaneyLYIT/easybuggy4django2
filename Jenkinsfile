@@ -4,7 +4,7 @@ pipeline {
   stages {
     stage('SCM') {
       steps {
-        node('checkout') {
+        node('Built-In Node') {
           checkout scm
         }
       }
