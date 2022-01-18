@@ -14,8 +14,13 @@ pipeline {
         scannerHome = tool 'SQScanner'
       }
       steps {
-        withSonarQubeEnv(installationName: 'SonarQube') {
-          sh "${scannerHome}/bin/sonar-scanner"
+        node('main') {
+          env.JAVA_HOME="${tool 'java11'}"
+          env.PATH="${env.JAVA_HOME}/bin:${env.PATH}"
+          sh 'java -version'
+          withSonarQubeEnv(installationName: 'SonarQube') {
+            sh "${scannerHome}/bin/sonar-scanner"
+          }
         }
       }
     }
