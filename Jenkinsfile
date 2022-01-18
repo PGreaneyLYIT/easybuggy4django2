@@ -16,8 +16,8 @@ pipeline {
       steps {
         node('main') {
           environment {
-            env.JAVA_HOME="${tool 'java11'}"
-            env.PATH="${env.JAVA_HOME}/bin:${env.PATH}"
+            JAVA_HOME="${tool 'java11'}"
+            PATH="${JAVA_HOME}/bin:${PATH}"
             sh 'java -version'
           }
           withSonarQubeEnv(installationName: 'SonarQube') {
