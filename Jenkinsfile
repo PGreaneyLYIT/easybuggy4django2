@@ -14,7 +14,7 @@ pipeline {
         JAVA_HOME="${tool 'java11'}"
         PATH="${JAVA_HOME}/bin:${PATH}"
       }
-      tools {jdk: "java11"}
+      tools {jdk "java11"}
       steps {
         sh 'java -version'
         withSonarQubeEnv(installationName: 'SonarQube') {
