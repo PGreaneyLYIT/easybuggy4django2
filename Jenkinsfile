@@ -4,7 +4,7 @@ pipeline {
   stages {
     stage('SCM') {
       steps {
-        node {
+        node('checkout') {
           checkout scm
         }
       }
@@ -12,7 +12,7 @@ pipeline {
     stage('SonarQube Analysis') {
       steps {
         def scannerHome = tool 'SQScanner';
-        withSonarQubeEnv() {
+        withSonarQubeEnv(installationName: 'SonarQube') {
           sh "${scannerHome}/bin/sonar-scanner"
         }
       }
