@@ -1,9 +1,11 @@
 pipeline {
   agent any
   tools {jdk "java11"}
-  node {
+  stages {
     stage('SCM') {
-      checkout scm
+      node {
+        checkout scm
+      }
     }
     stage('SonarQube Analysis') {
       def scannerHome = tool 'SQScanner';
