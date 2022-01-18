@@ -1,9 +1,7 @@
-stage('SonarQube analysis') {
-    tools {
-        jdk "java11" // the name you have given the JDK installation in Global Tool Configuration
-    }
+stage('SonarQube Analysis') {
+    tool name "java11"
     environment {
-        scannerHome = tool 'SQScanner' // the name you have given the Sonar Scanner (in Global Tool Configuration)
+        scannerHome = tool 'SQScanner'
     }
     steps {
         withSonarQubeEnv(installationName: 'SonarQube') {
