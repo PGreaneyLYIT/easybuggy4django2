@@ -1,7 +1,7 @@
 pipeline {
   agent any
   tools {jdk "java11"}
-  stages{
+  stages {
       stage('SCM') {
         node {
         checkout scm
