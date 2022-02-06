@@ -3,7 +3,7 @@ import os
 import sys
 
 print("Testing")
-# Comment testing WhiteSource Bolt
+# Comment2 testing WhiteSource Bolt
 
 if __name__ == "__main__":
     os.environ.setdefault("DJANGO_SETTINGS_MODULE", "config.settings")
